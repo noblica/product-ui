@@ -1,22 +1,26 @@
 name: Build all
 on: [push]
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
+  runs-on: ubuntu-latest
+
+  steps:
+    build:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-pnpm-modules
         with:
-          node-version: 12
-      - uses: actions/cache@v2
-        id: pnpm-store
-        with:
-          path: ~/.pnpm-store/v3
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-
-      - uses: pnpm/action-setup@v1.2.1
-        with:
-          version: 6
-      - run: pnpm i --frozen-lockfile
+            ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
+
+      - uses: pnpm/action-setup@v2.0.1
+      with:
+        version: 6.9.1
+        run_install: true
+
       - run: pnpm build
