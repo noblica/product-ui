@@ -1,26 +1,12 @@
 name: Build all
-on: [push]
+on:
+  - push
+  - pull_request
 
 jobs:
   runs-on: ubuntu-latest
 
   steps:
-    build:
-      - uses: actions/checkout@v2
-
-      - name: Cache pnpm modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-pnpm-modules
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
-
-      - uses: pnpm/action-setup@v2.0.1
+    - uses: pnpm/action-setup@v2.0.1
       with:
-        version: 6.9.1
-        run_install: true
-
-      - run: pnpm build
+        version: 6.0.2
