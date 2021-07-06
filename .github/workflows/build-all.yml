@@ -21,4 +21,5 @@ jobs:
         version: 6.9.1
         run_install: true
 
+    - run: pnpm --version
     - run: pnpm build
