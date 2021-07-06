@@ -22,3 +22,12 @@ jobs:
         version: 6.9.1
         run_install: true
     - run: pnpm build
+
+    - name: Push release changes
+      if: github.github.head_ref == null
+      run: |
+        git add --force packages/initializr/public/build
+        git commit -m "[product-ui] Committing the build"
+        git push
+      env:
+        IMAGE_VERSION : ${{ needs.setup-build-push.outputs.image_version }}
