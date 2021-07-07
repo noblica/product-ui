@@ -1,17 +1,24 @@
-name: Build production
+name: "[All Packages]: Production build"
 on: 
   push:
     branches:
       - master
+    paths: packages/core/**
 jobs:
-  build-and-commit:
+  production-build-style-guide:
+    name: Generate a production build.
     runs-on: ubuntu-latest
     env:
       CI: false
+    defaults:
+      run:
+        working-directory: ./packages/style-guide
+
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
+    - name: Check PNPM cache before install
+      uses: actions/cache@v2
       env:
         cache-name: cache-pnpm-modules
       with:
@@ -20,18 +27,20 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
 
-    - uses: pnpm/action-setup@v2.0.1
+    - name: Install dependencies
+      uses: pnpm/action-setup@v2.0.1
       with:
         version: 6.9.1
         run_install: true
-    - run: pnpm build
+    
+    - name: Generate the build
+      run: pnpm build
 
-    - name: Push release changes
+    - name: Commit the build
       if: github.github.head_ref == null
       run: |
         git config user.name 'Dusan Perkovic'
         git config user.email 'dusan.perkovic@axoniq.io'
 
-        git add --force packages/initializr/public/build
-        git commit -m "[product-ui] Committing the build"
+        git commit -am "[All Packages]: Committing the build"
         git push

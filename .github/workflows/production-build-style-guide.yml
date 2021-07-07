@@ -1,0 +1,46 @@
+name: "[Style Guide]: Production build"
+on: 
+  push:
+    branches:
+      - master
+    paths: packages/style-guide/**
+jobs:
+  production-build-style-guide:
+    name: Generate a production build
+    runs-on: ubuntu-latest
+    env:
+      CI: false
+    defaults:
+      run:
+        working-directory: ./packages/style-guide
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Check PNPM cache before install
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-pnpm-modules
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
+
+    - name: Install dependencies"
+      uses: pnpm/action-setup@v2.0.1
+      with:
+        version: 6.9.1
+        run_install: true
+    
+    - name: Generate the build
+      run: pnpm build
+
+    - name: Commit the build
+      if: github.github.head_ref == null
+      run: |
+        git config user.name 'Dusan Perkovic'
+        git config user.email 'dusan.perkovic@axoniq.io'
+
+        git commit -am "[Style Guide]: Committing the build"
+        git push
