@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: false
-    defaults:
-      run:
-        working-directory: ./packages/style-guide
 
     steps:
     - uses: actions/checkout@v2
