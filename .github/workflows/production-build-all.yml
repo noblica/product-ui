@@ -5,8 +5,8 @@ on:
       - master
     paths: packages/core/**
 jobs:
-  name: Generate a production build.
   production-build-style-guide:
+    name: Generate a production build.
     runs-on: ubuntu-latest
     env:
       CI: false

@@ -5,8 +5,8 @@ on:
       - master
     paths: packages/initializr/**
 jobs:
-  name: Generate a production build.
   production-build-initialzr:
+    name: Generate a production build.
     runs-on: ubuntu-latest
     env:
       CI: false
