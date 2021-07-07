@@ -1,11 +1,11 @@
-name: [Initializr]: Production build
+name: [Initializr] Production build
 on: 
   push:
     branches:
       - master
     paths: packages/initializr/**
 jobs:
-  name: [Initializr]: Generate a production build.
+  name: [Initializr] Generate a production build.
   production-build-initialzr:
     runs-on: ubuntu-latest
     env:
@@ -33,14 +33,14 @@ jobs:
         version: 6.9.1
         run_install: true
     
-    - name: [Initializr]: Generate the build
+    - name: [Initializr] Generate the build
       run: pnpm build
 
-    - name: [Initializr]: Commit the build
+    - name: [Initializr] Commit the build
       if: github.github.head_ref == null
       run: |
         git config user.name 'Dusan Perkovic'
         git config user.email 'dusan.perkovic@axoniq.io'
 
-        git commit -am "[Initializr]: Committing the build"
+        git commit -am "[Initializr] Committing the build"
         git push
