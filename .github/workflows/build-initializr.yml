@@ -1,9 +1,9 @@
 name: Build Initializr package
 on:
   push:
-    paths: packages/initializr
+    paths: packages/initializr/**
   pull_request:
-    paths: packages/initializr
+    paths: packages/initializr/**
 jobs:
   build-initializr:
     name: Build Initializr

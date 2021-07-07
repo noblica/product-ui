@@ -1,9 +1,9 @@
 name: Build Core package
 on:
   push:
-    paths: packages/core
+    paths: packages/core/**
   pull_request:
-    paths: packages/core
+    paths: packages/core/**
 jobs:
   build-initializr:
     name: Build Core

@@ -1,9 +1,9 @@
 name: Build Style Guide package
 on:
   push:
-    paths: packages/style-guide
+    paths: packages/style-guide/**
   pull_request:
-    paths: packages/style-guide
+    paths: packages/style-guide/**
 jobs:
   build-initializr:
     name: Build Style Guide
