@@ -1,16 +1,13 @@
-name: Build Initializr package
+name: Build Core package
 on: 
   pull_request:
-    paths: packages/initializr
+    paths: packages/core
 jobs:
   build-initializr:
-    name: Build Initializr
+    name: Build Core
     runs-on: ubuntu-latest
     env:
       CI: false
-    defaults:
-      run:
-        wroking-directory: packages/initializr
 
     steps:
     - uses: actions/checkout@v2
@@ -31,5 +28,5 @@ jobs:
         version: 6.9.1
         run_install: true
 
-    - name: Execute the initializr build
+    - name: Build all packages.
       run: pnpm build
