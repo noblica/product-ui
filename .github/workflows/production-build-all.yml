@@ -37,7 +37,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: initialzr-build
-        path: packages/initialzr/public
+        path: packages/initializr/public
 
     - name: Archive Style Guide production artifacts
       uses: actions/upload-artifact@v2
