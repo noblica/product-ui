@@ -3,10 +3,14 @@ on: [pull_request]
 jobs:
   install-dependencies:
     runs-on: ubuntu-latest
+    env:
+      CI: false
+
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
+    - name: Check pnpm cache before install
+      uses: actions/cache@v2
       env:
         cache-name: cache-pnpm-modules
       with:
@@ -15,18 +19,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
 
-    - uses: pnpm/action-setup@v2.0.1
+    - name: Install dependencies
+      uses: pnpm/action-setup@v2.0.1
       with:
         version: 6.9.1
         run_install: true
 
-  build-initializr:
-    runs-on: ubuntu-latest
-    env:
-      CI: false
-    steps:
     - name: Execute the initializr build
       working-directory: packages/initializr
       run: pnpm build
-  
-
