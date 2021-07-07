@@ -13,6 +13,8 @@ let dataLoaded = false;
 let initialData: InitializerData;
 let addedDependencies: DependenciesValue[] = [];
 
+console.log('test app');
+
 onMount(async() => {
 	initialData = await getInitialData();
 
