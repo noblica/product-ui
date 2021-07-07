@@ -3,6 +3,8 @@
 
     export let open: boolean;
     export let onClose: () => void;
+
+    console.log('I am a Dialog!');
 </script>
 
 <svelte:window on:keydown={(event) => {
