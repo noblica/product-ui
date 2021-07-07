@@ -1,7 +1,5 @@
 name: Build Style Guide package
 on:
-  push:
-    paths: packages/style-guide/**
   pull_request:
     paths: packages/style-guide/**
 jobs:
