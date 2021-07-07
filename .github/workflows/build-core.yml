@@ -1,5 +1,7 @@
 name: Build Core package
-on: 
+on:
+  push:
+    paths: packages/core
   pull_request:
     paths: packages/core
 jobs:
