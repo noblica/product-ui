@@ -1,11 +1,11 @@
-name: [Style Guide] Production build
+name: "[Style Guide]: Production build"
 on: 
   push:
     branches:
       - master
     paths: packages/style-guide/**
 jobs:
-  name: [Style Guide] Generate a production build.
+  name: "[Style Guide]: Generate a production build."
   production-build-style-guide:
     runs-on: ubuntu-latest
     env:
@@ -42,5 +42,5 @@ jobs:
         git config user.name 'Dusan Perkovic'
         git config user.email 'dusan.perkovic@axoniq.io'
 
-        git commit -am "[Style Guide] Committing the build"
+        git commit -am "[Style Guide]: Committing the build"
         git push

@@ -1,11 +1,11 @@
-name: [Initializr] Production build
+name: "[Initializr]: Production build"
 on: 
   push:
     branches:
       - master
     paths: packages/initializr/**
 jobs:
-  name: [Initializr] Generate a production build.
+  name: "[Initializr]: Generate a production build."
   production-build-initialzr:
     runs-on: ubuntu-latest
     env:
@@ -27,7 +27,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
 
-    - name: [All Packages]: Install dependencies
+    - name: Install dependencies
       uses: pnpm/action-setup@v2.0.1
       with:
         version: 6.9.1
@@ -42,5 +42,5 @@ jobs:
         git config user.name 'Dusan Perkovic'
         git config user.email 'dusan.perkovic@axoniq.io'
 
-        git commit -am "[Initializr] Committing the build"
+        git commit -am "[Initializr]: Committing the build"
         git push
