@@ -36,12 +36,8 @@ jobs:
     - name: Generate the build
       run: pnpm build
 
-    - name: Commit the build
-      if: github.github.head_ref == null
-      run: |
-        git config user.name 'Dusan Perkovic'
-        git config user.email 'dusan.perkovic@axoniq.io'
-
-        git add public
-        git commit -m "[Initializr]: Committing the build"
-        git push
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: initialzr-build
+        path: packages/initialzr/public
