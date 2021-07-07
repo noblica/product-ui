@@ -1,7 +1,8 @@
 name: Build Initializr
 on: [pull_request]
 jobs:
-  install-dependencies:
+  build-initializr:
+    name: Build Initializr
     runs-on: ubuntu-latest
     env:
       CI: false
@@ -9,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Check pnpm cache before install
+    - name: Check PNPM cache before install
       uses: actions/cache@v2
       env:
         cache-name: cache-pnpm-modules
