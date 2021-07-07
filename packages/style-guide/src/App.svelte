@@ -12,8 +12,6 @@ let textExample = 'Please change me'
 let searchExample = 'I am a filter'
 
 let dialogOpen = false;
-
-console.log('test');
 </script>
 
 <main>
