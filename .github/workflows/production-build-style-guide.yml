@@ -42,5 +42,6 @@ jobs:
         git config user.name 'Dusan Perkovic'
         git config user.email 'dusan.perkovic@axoniq.io'
 
-        git commit -am "[Style Guide]: Committing the build"
+        git add public
+        git commit -m "[Style Guide]: Committing the build"
         git push
