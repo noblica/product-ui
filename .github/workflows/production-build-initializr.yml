@@ -5,7 +5,7 @@ on:
       - master
     paths: packages/initializr/**
 jobs:
-  name: "[Initializr]: Generate a production build."
+  name: Generate a production build.
   production-build-initialzr:
     runs-on: ubuntu-latest
     env:
@@ -33,10 +33,10 @@ jobs:
         version: 6.9.1
         run_install: true
     
-    - name: [Initializr] Generate the build
+    - name: Generate the build
       run: pnpm build
 
-    - name: [Initializr] Commit the build
+    - name: Commit the build
       if: github.github.head_ref == null
       run: |
         git config user.name 'Dusan Perkovic'

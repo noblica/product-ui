@@ -5,7 +5,7 @@ on:
       - master
     paths: packages/style-guide/**
 jobs:
-  name: "[Style Guide]: Generate a production build."
+  name: Generate a production build
   production-build-style-guide:
     runs-on: ubuntu-latest
     env:
@@ -27,7 +27,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
 
-    - name: Install dependencies
+    - name: Install dependencies"
       uses: pnpm/action-setup@v2.0.1
       with:
         version: 6.9.1
@@ -36,7 +36,7 @@ jobs:
     - name: Generate the build
       run: pnpm build
 
-    - name: [Style Guide] Commit the build
+    - name: Commit the build
       if: github.github.head_ref == null
       run: |
         git config user.name 'Dusan Perkovic'
