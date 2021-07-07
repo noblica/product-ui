@@ -12,7 +12,7 @@ jobs:
       CI: false
     defaults:
       run:
-        working-directory: packages/initializr
+        working-directory: ./packages/initializr
 
     steps:
     - uses: actions/checkout@v2

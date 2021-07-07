@@ -5,14 +5,14 @@ on:
   pull_request:
     paths: packages/style-guide/**
 jobs:
-  build-initializr:
+  build-style-guide:
     name: Build Style Guide
     runs-on: ubuntu-latest
     env:
       CI: false
     defaults:
       run:
-        working-directory: packages/style-guide
+        working-directory: ./packages/style-guide
 
     steps:
     - uses: actions/checkout@v2
@@ -33,5 +33,5 @@ jobs:
         version: 6.9.1
         run_install: true
 
-    - name: Execute the initializr build
+    - name: Execute the Style Guide build
       run: pnpm build

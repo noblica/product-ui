@@ -5,7 +5,7 @@ on:
   pull_request:
     paths: packages/core/**
 jobs:
-  build-initializr:
+  build-core:
     name: Build Core
     runs-on: ubuntu-latest
     env:
