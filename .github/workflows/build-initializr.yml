@@ -3,7 +3,7 @@ on:
   pull_request:
     paths: 
       - 'packages/initializr/**'
-      - '!packages/core/**'
+      - 'packages/core/**'
 jobs:
   build-initializr:
     name: Build Initializr
