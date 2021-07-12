@@ -3,7 +3,7 @@ on:
   pull_request:
     paths: 
       - 'packages/style-guide/**'
-      - '!packages/core/**'
+      - 'packages/core/**'
 jobs:
   build-style-guide:
     name: Build Style Guide
