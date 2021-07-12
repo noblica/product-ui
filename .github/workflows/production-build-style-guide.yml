@@ -36,8 +36,12 @@ jobs:
     - name: Generate the build
       run: pnpm build
 
-    - name: Archive Style Guide production artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: style-guide-build
-        path: packages/style-guide/public
+    - name: Commit the build
+      if: github.github.head_ref == null
+      run: |
+        git config user.name 'Dusan Perkovic'
+        git config user.email 'dusan.perkovic@axoniq.io'
+
+        git add public
+        git commit -m "[Style Guide]: Committing the build"
+        git push
