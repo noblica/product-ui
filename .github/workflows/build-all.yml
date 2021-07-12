@@ -1,10 +1,10 @@
-name: Build Core package
+name: Build all packages
 on:
   pull_request:
     paths: packages/core/**
 jobs:
-  build-core:
-    name: Build Core
+  build-all:
+    name: Build all packages.
     runs-on: ubuntu-latest
     env:
       CI: false
