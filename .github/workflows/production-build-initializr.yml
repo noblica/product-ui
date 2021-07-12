@@ -3,7 +3,9 @@ on:
   push:
     branches:
       - master
-    paths: packages/initializr/**
+    paths: 
+      - 'packages/initializr/**'
+      - '!packages/core/**'
 jobs:
   production-build-initialzr:
     name: Generate a production build.
