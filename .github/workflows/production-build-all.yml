@@ -39,6 +39,6 @@ jobs:
         git config user.name 'Dusan Perkovic'
         git config user.email 'dusan.perkovic@axoniq.io'
 
-        git add packages/**/public
+        git add --force packages/**/public
         git commit -m "[All Packages]: Committing the build"
         git push
