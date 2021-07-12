@@ -3,8 +3,6 @@
 
     export let open: boolean;
     export let onClose: () => void;
-
-    console.log('core console.log');
 </script>
 
 <svelte:window on:keydown={(event) => {
