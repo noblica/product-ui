@@ -3,8 +3,9 @@ on:
   push:
     branches:
       - master
-    paths: packages/style-guide/**
-    paths-ignore: packages/core/**
+    paths: 
+      - 'packages/style-guide/**'
+      - '!packages/core/**'
 jobs:
   production-build-style-guide:
     name: Generate a production build

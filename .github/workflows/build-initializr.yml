@@ -1,8 +1,9 @@
 name: Build Initializr package
 on:
   pull_request:
-    paths: packages/initializr/**
-    paths-ignore: packages/core/**
+    paths: 
+      - 'packages/initializr/**'
+      - '!packages/core/**'
 jobs:
   build-initializr:
     name: Build Initializr
