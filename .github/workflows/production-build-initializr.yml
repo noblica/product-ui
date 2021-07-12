@@ -5,7 +5,7 @@ on:
       - master
     paths: 
       - 'packages/initializr/**'
-      - '!packages/core/**'
+      - 'packages/core/**'
 jobs:
   production-build-initialzr:
     name: Generate a production build.
