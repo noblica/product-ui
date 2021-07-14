@@ -1,5 +1,5 @@
 export {}
 
 declare global {
-    var currentEnv: "local" | "dev" | "prod";
+    var currentEnv: "local" | "prod";
 }
