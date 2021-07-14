@@ -36,8 +36,6 @@ export default (args) => {
 
 	if (args['config-local']) {
 		currentEnv = 'local';
-	} else if (args['config-dev']) {
-		currentEnv = 'dev';
 	} else if (args['config-prod']) {
 		currentEnv = 'prod';
 	}
